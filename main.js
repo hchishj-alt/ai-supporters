@@ -51,7 +51,7 @@
       if (i !== n) s.querySelectorAll('video').forEach(function (v) {
         v.pause(); v.muted = true;
         var b = v.parentNode.querySelector('.snd');
-        if (b) { b.setAttribute('aria-pressed', 'false'); b.textContent = '소리 켜기'; }
+        if (b) setSnd(b, false);
       });
     });
     var s = slides[n];
@@ -111,17 +111,52 @@
     lock = now; go(idx + (e.deltaY > 0 ? 1 : -1));
   }, { passive: true });
 
-  // 영상별 소리 켜기 (기본 음소거)
+  // 영상별 소리 켜기 (기본 음소거, 아이콘 버튼)
+  function setSnd(btn, on) {
+    btn.setAttribute('aria-pressed', String(on));
+    btn.setAttribute('aria-label', on ? '소리 끄기' : '소리 켜기');
+    btn.querySelector('use').setAttribute('href', on ? '#i-sound' : '#i-muted');
+  }
   document.querySelectorAll('.snd').forEach(function (btn) {
     var v = btn.parentNode.querySelector('video');
     btn.addEventListener('click', function (e) {
       e.stopPropagation();
       v.muted = !v.muted;
       if (!v.muted) v.play().catch(function () {});
-      btn.setAttribute('aria-pressed', String(!v.muted));
-      btn.textContent = v.muted ? '소리 켜기' : '소리 끄기';
+      setSnd(btn, !v.muted);
     });
   });
+
+  // 카드뉴스 탭
+  var caps = [
+    '1주차 · 처음 듣는 사람도 부담 없게, 밝은 색과 체크리스트로 강좌를 소개했습니다.',
+    '3주차 · 빅데이터와 IoT를 “스마트워치가 내 심박수를 재는 거” 같은 질문으로 시작했습니다.',
+    '5주차 · VR, AR, MR, XR 차이를 한 장에 한 가지씩 나눠 정리했습니다.',
+    '2주차 포스터, 4주차 스토리, 7주차 마감 포스터(스토리용 · 피드용)'
+  ];
+  var tabs = document.querySelectorAll('.tabs button');
+  var fans = document.querySelectorAll('.fans .fan');
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var k = parseInt(t.getAttribute('data-set'), 10);
+      tabs.forEach(function (x) { x.classList.toggle('on', x === t); });
+      fans.forEach(function (f, i) { f.classList.toggle('show', i === k); });
+      document.getElementById('cardCap').textContent = caps[k];
+    });
+  });
+
+  // SCATTER FACE 순서 재생
+  var sfImgs = document.querySelectorAll('.sf-frames img');
+  var sfSteps = document.querySelectorAll('.sf-steps li');
+  var sfIdx = 0;
+  setInterval(function () {
+    var hw = document.querySelector('.s-hw');
+    if (!hw || !hw.classList.contains('active')) return;
+    sfIdx = (sfIdx + 1) % sfImgs.length;
+    sfImgs.forEach(function (im, i) { im.classList.toggle('on', i === sfIdx); });
+    sfSteps.forEach(function (li, i) { li.classList.toggle('on', i === sfIdx); });
+  }, 1600);
 
   window.addEventListener('resize', fit);
   window.addEventListener('hashchange', function () {
