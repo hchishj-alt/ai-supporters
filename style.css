@@ -233,21 +233,28 @@ h1 em,h2 em{font-style:normal;color:var(--lime)}
 
 
 /* 표지 작업물 스택 */
-.cover-stack{position:absolute;right:90px;top:50%;width:640px;height:640px;transform:translateY(-50%)}
-.cs{position:absolute;border-radius:16px;border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.55);opacity:0;transition:opacity .9s var(--ease),transform 1.2s var(--ease)}
-.cs.c1{width:250px;left:0;top:70px;transform:translateY(40px) rotate(-8deg)}
-.cs.c2{width:250px;left:170px;top:10px;transform:translateY(40px) rotate(-2deg)}
-.cs.c3{width:250px;left:340px;top:90px;transform:translateY(40px) rotate(6deg)}
-.cs.c4{width:190px;left:470px;top:300px;transform:translateY(40px) rotate(9deg)}
-.cs.c5{width:360px;left:40px;top:410px;transform:translateY(40px) rotate(-4deg)}
-.slide.active .cs{opacity:1}
-.slide.active .cs.c1{transform:rotate(-8deg);transition-delay:.3s;animation:float 7s ease-in-out 1.5s infinite}
-.slide.active .cs.c2{transform:rotate(-2deg);transition-delay:.45s;animation:float 8s ease-in-out 1.7s infinite reverse}
-.slide.active .cs.c3{transform:rotate(6deg);transition-delay:.6s;animation:float 6.5s ease-in-out 1.9s infinite}
-.slide.active .cs.c4{transform:rotate(9deg);transition-delay:.75s;animation:float 7.5s ease-in-out 2.1s infinite reverse}
-.slide.active .cs.c5{transform:rotate(-4deg);transition-delay:.9s;animation:float 9s ease-in-out 2.3s infinite}
+.cover-stack{position:absolute;right:70px;top:50%;width:700px;height:700px;transform:translateY(-50%)}
+.cs{position:absolute;margin:0;opacity:0;transition:opacity .9s var(--ease),transform 1.2s var(--ease);transform:translateY(40px) rotate(var(--r))}
+.cs img{display:block;width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:0 30px 70px rgba(0,0,0,.55)}
+.cs figcaption{position:absolute;left:10px;bottom:10px;font-size:12px;font-weight:600;padding:5px 10px;border-radius:99px;background:rgba(10,11,13,.8);color:#fff;border:1px solid rgba(255,255,255,.15);white-space:nowrap}
+.cs.c1{width:330px;left:0;top:30px;--r:-5deg;z-index:2}
+.cs.c2{width:200px;left:300px;top:0;--r:4deg;z-index:3}
+.cs.c3{width:160px;left:520px;top:60px;--r:7deg;z-index:7}
+.cs.c4{width:320px;left:30px;top:260px;--r:3deg;z-index:4}
+.cs.c5{width:330px;left:330px;top:330px;--r:-4deg;z-index:5}
+.cs.c6{width:150px;left:560px;top:380px;--r:6deg;z-index:6}
+.cs.c6 img{height:220px;object-fit:cover}
+.cs.c7{width:300px;left:60px;top:480px;--r:-3deg;z-index:6}
+.slide.active .cs{opacity:1;transform:rotate(var(--r));animation:float 8s ease-in-out infinite}
+.slide.active .c1{transition-delay:.25s;animation-delay:1.4s}
+.slide.active .c2{transition-delay:.35s;animation-delay:1.8s;animation-direction:reverse}
+.slide.active .c3{transition-delay:.45s;animation-delay:2.2s}
+.slide.active .c4{transition-delay:.55s;animation-delay:1.6s;animation-direction:reverse}
+.slide.active .c5{transition-delay:.65s;animation-delay:2s}
+.slide.active .c6{transition-delay:.75s;animation-delay:2.4s;animation-direction:reverse}
+.slide.active .c7{transition-delay:.85s;animation-delay:1.9s}
 @keyframes float{50%{translate:0 -12px}}
-.s-cover h1,.s-cover .lead,.s-cover .meta{max-width:760px}
+.s-cover h1,.s-cover .lead,.s-cover .meta{max-width:700px}
 .s-cover .lead{font-size:21px}
 
 /* 카드뉴스 탭 + 팬 */
