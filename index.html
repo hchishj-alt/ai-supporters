@@ -71,7 +71,7 @@
   <h2 data-a>서포터즈가 할 일을 이미 해 봤습니다</h2>
   <div class="map">
     <button class="map-card" data-go="3" data-a><span class="n">01</span><b>카드뉴스 · 포스터</b><p>K-MOOC AI 강좌 카드뉴스 5장, 마감 포스터 2종, 주차별 홍보물 15건</p><i>→ 04</i></button>
-    <button class="map-card" data-go="5" data-a><span class="n">02</span><b>쇼츠 · 홍보영상</b><p>생성형 AI 비교 숏폼 42초, 59초 모션그래픽 MV, 게임 플레이 영상</p><i>→ 06</i></button>
+    <button class="map-card" data-go="5" data-a><span class="n">02</span><b>쇼츠 · 홍보영상</b><p>생성형 AI 비교 숏폼 42초, 모션그래픽 MV, 게임 플레이 영상</p><i>→ 06</i></button>
     <button class="map-card" data-go="8" data-a><span class="n">03</span><b>노션 · 웹사이트</b><p>3D 가상 전시, 웹 초대장, 촬영 키오스크, 포트폴리오 사이트 등 웹·앱 10개</p><i>→ 09</i></button>
     <button class="map-card" data-go="11" data-a><span class="n">04</span><b>SNS 관리</b><p>뷰티 릴스 계정 운영, 브랜드 SNS 운영, 채널별 홍보 형식 바꾸기</p><i>→ 12</i></button>
   </div>
@@ -124,8 +124,8 @@
       </ul>
     </div>
     <figure class="phone" data-a>
-      <video src="short.mp4" poster="short1.webp" controls playsinline preload="none" muted></video>
-      <figcaption>숏폼 42초 · 소리 켜고 재생</figcaption>
+      <div class="vwrap"><video src="short.mp4" poster="short1.webp" autoplay muted loop playsinline preload="metadata"></video><button class="snd" type="button" aria-pressed="false">소리 켜기</button></div>
+      <figcaption>숏폼 42초 · 기본 음소거</figcaption>
     </figure>
     <div class="posters">
       <img src="poster_story.webp" alt="마감 포스터 스토리용" data-a>
@@ -206,7 +206,7 @@
     <div>
       <h2 data-a>AI로 소스를 만들고,<br>박자에 맞춰 직접 편집합니다</h2>
       <div class="vcard" data-a>
-        <b>THE MARIONETTE · 59초 MV</b>
+        <b>THE MARIONETTE · 모션그래픽 MV</b>
         <p>캐릭터·소품·장소는 제가 디자인하고, 음악은 Suno, 이미지는 ChatGPT, 영상 클립은 Seedance로 만든 뒤 After Effects에서 박자에 맞춰 편집했습니다.</p>
         <a href="https://youtu.be/ZFTEGIxxgk0" target="_blank" rel="noopener">유튜브에서 보기 ↗</a>
       </div>
@@ -216,7 +216,7 @@
       </div>
     </div>
     <div class="vstack">
-      <figure class="shot" data-a><img src="marionette.webp" alt="THE MARIONETTE 장면"></figure>
+      <figure class="shot vwrap" data-a><video src="marionette.mp4" poster="marionette.webp" autoplay muted loop playsinline preload="metadata"></video><button class="snd" type="button" aria-pressed="false">소리 켜기</button></figure>
       <figure class="shot" data-a><video src="gameplay.mp4" poster="play-craft.webp" autoplay muted loop playsinline preload="none"></video></figure>
     </div>
   </div>

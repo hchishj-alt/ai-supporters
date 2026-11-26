@@ -249,3 +249,11 @@ h1 em,h2 em{font-style:normal;color:var(--lime)}
   *,*::before,*::after{animation:none!important;transition-duration:.01ms!important;transition-delay:0s!important}
   .tl{opacity:1;transform:none}
 }
+
+/* 소리 버튼 */
+.vwrap{position:relative}
+.snd{position:absolute;right:12px;bottom:12px;z-index:3;font-size:13px;font-weight:600;padding:7px 12px 7px 30px;border-radius:99px;background:rgba(10,11,13,.75);border:1px solid rgba(255,255,255,.18);color:#fff;backdrop-filter:blur(6px);transition:background .2s,color .2s}
+.snd::before{content:"";position:absolute;left:11px;top:50%;width:12px;height:12px;transform:translateY(-50%);background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M3 9v6h4l5 5V4L7 9H3z'/%3E%3C/svg%3E") center/contain no-repeat}
+.snd:hover{background:var(--lime);color:#111}
+.snd[aria-pressed="true"]{background:var(--lime);color:#111;border-color:var(--lime)}
+.phone .vwrap .snd{bottom:18px;right:16px}

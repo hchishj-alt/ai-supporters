@@ -48,7 +48,11 @@
     slides.forEach(function (s, i) {
       s.classList.toggle('active', i === n);
       s.classList.toggle('before', i < n);
-      if (i !== n) s.querySelectorAll('video').forEach(function (v) { v.pause(); });
+      if (i !== n) s.querySelectorAll('video').forEach(function (v) {
+        v.pause(); v.muted = true;
+        var b = v.parentNode.querySelector('.snd');
+        if (b) { b.setAttribute('aria-pressed', 'false'); b.textContent = '소리 켜기'; }
+      });
     });
     var s = slides[n];
     s.querySelectorAll('video[autoplay]').forEach(function (v) { v.play().catch(function () {}); });
@@ -106,6 +110,18 @@
     if (now - lock < 900 || Math.abs(e.deltaY) < 30) return;
     lock = now; go(idx + (e.deltaY > 0 ? 1 : -1));
   }, { passive: true });
+
+  // 영상별 소리 켜기 (기본 음소거)
+  document.querySelectorAll('.snd').forEach(function (btn) {
+    var v = btn.parentNode.querySelector('video');
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      v.muted = !v.muted;
+      if (!v.muted) v.play().catch(function () {});
+      btn.setAttribute('aria-pressed', String(!v.muted));
+      btn.textContent = v.muted ? '소리 켜기' : '소리 끄기';
+    });
+  });
 
   window.addEventListener('resize', fit);
   window.addEventListener('hashchange', function () {
